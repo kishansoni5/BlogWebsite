@@ -1,0 +1,12 @@
+# Database credentials - never push to GitHub!
+src/main/resources/db.properties
+
+# Maven build folder
+target/
+
+# VS Code settings
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
