@@ -1,0 +1,194 @@
+/* ── Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg:           #faf9f7;
+    --surface:      #ffffff;
+    --border:       #e8e4de;
+    --text-primary: #1a1a1a;
+    --text-muted:   #888580;
+    --text-light:   #b0aca6;
+    --accent:       #1a1a1a;
+    --accent-hover: #333333;
+    --radius:       10px;
+    --font-serif:   'DM Serif Display', Georgia, serif;
+    --font-sans:    'DM Sans', system-ui, sans-serif;
+    --nav-height:   64px;
+    --transition:   0.2s ease;
+}
+
+html { font-size: 16px; }
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Navbar ───────────────────────────────────────────── */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    background: rgba(250, 249, 247, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.nav-brand {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.nav-user {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.btn-write {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff;
+    background: var(--accent);
+    text-decoration: none;
+    padding: 0.45rem 1.1rem;
+    border-radius: 20px;
+    transition: background var(--transition), transform var(--transition);
+}
+
+.btn-write:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.nav-logout {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: all var(--transition);
+}
+
+.nav-logout:hover {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    background: var(--surface);
+}
+
+/* ── Main container ───────────────────────────────────── */
+.main-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 6rem;
+}
+
+/* ── Back link ────────────────────────────────────────── */
+.back-link {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 2.5rem;
+    transition: color var(--transition);
+}
+
+.back-link:hover {
+    color: var(--text-primary);
+}
+
+/* ── Post article ─────────────────────────────────────── */
+.post-article {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 3rem 3.5rem;
+}
+
+/* ── Post header ──────────────────────────────────────── */
+.post-header {
+    margin-bottom: 2rem;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.post-author {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.post-dot {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.post-date {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.post-title {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+.post-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 2rem;
+}
+
+/* ── Post content ─────────────────────────────────────── */
+.post-content {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 600px) {
+    .main-container { padding: 1.5rem 1.25rem 4rem; }
+    .post-article   { padding: 1.75rem 1.5rem; }
+    .post-title     { font-size: 1.75rem; }
+    .navbar         { padding: 0 1.25rem; }
+    .nav-user       { display: none; }
+}

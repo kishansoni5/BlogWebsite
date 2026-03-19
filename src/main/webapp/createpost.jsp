@@ -8,7 +8,7 @@
     }
     User currentUser = (User) userSession.getAttribute("user");
     String error = (String) request.getAttribute("error");
-    String prevTitle = request.getParameter("title") != null ? request.getParameter("title") : "";
+    String prevTitle   = request.getParameter("title")   != null ? request.getParameter("title")   : "";
     String prevContent = request.getParameter("content") != null ? request.getParameter("content") : "";
 %>
 <!DOCTYPE html>
@@ -16,19 +16,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Write a Post — Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Write a Post — BlogSpace</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/create-post.css">
+    <link rel="stylesheet" href="css/createpost.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="/" class="nav-brand">The Blog</a>
+        <a href="home" class="nav-brand">Blog<span>Space</span></a>
         <div class="nav-right">
             <span class="nav-user">Hi, <%= currentUser.getUsername() %></span>
-            <a href="logout" class="nav-logout">Logout</a>
+            <a href="logout" class="nav-logout">Sign Out</a>
         </div>
     </nav>
 
@@ -46,7 +44,7 @@
             </div>
         <% } %>
 
-        <form action="create-post" method="post" class="post-form" id="postForm">
+        <form action="createpost" method="post" class="post-form" id="postForm">
 
             <div class="form-group">
                 <label for="title" class="form-label">Title</label>
@@ -75,7 +73,7 @@
             </div>
 
             <div class="form-actions">
-                <a href="/" class="btn-cancel">Cancel</a>
+                <a href="home" class="btn-cancel">Cancel</a>
                 <button type="submit" class="btn-publish" id="submitBtn">
                     <span class="btn-text">Publish Post</span>
                     <span class="btn-loading" style="display:none;">Publishing...</span>
@@ -86,6 +84,6 @@
 
     </main>
 
-    <script src="js/create-post.js"></script>
+    <script src="js/createpost.js"></script>
 </body>
 </html>

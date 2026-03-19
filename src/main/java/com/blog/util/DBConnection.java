@@ -12,9 +12,13 @@ public class DBConnection {
 
     static {
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             InputStream input = DBConnection.class
                     .getClassLoader()
                     .getResourceAsStream("db.properties");
+            if (input == null) {
+                throw new RuntimeException("db.properties not found on classpath");
+            }
             Properties prop = new Properties();
             prop.load(input);
             URL = prop.getProperty("db.url");
@@ -25,13 +29,7 @@ public class DBConnection {
         }
     }
 
-    public static Connection getConnection() {
-        Connection con = null;
-        try {
-            con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return con;
+    public static Connection getConnection() throws java.sql.SQLException {
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
 }

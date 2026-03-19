@@ -15,7 +15,7 @@ import com.blog.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 
-@WebServlet("/create-post")
+@WebServlet("/createpost")
 public class CreatePostServlet extends HttpServlet {
 
     @Override
@@ -24,7 +24,7 @@ public class CreatePostServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (session != null && session.getAttribute("user") != null) {
-            request.getRequestDispatcher("create-post.jsp").forward(request, response);
+            request.getRequestDispatcher("createpost.jsp").forward(request, response);
         } else {
             response.sendRedirect("login");
         }
@@ -44,7 +44,7 @@ public class CreatePostServlet extends HttpServlet {
                 content == null || content.trim().isEmpty()) {
 
             request.setAttribute("error", "All fields are required!");
-            request.getRequestDispatcher("create-post.jsp").forward(request, response);
+            request.getRequestDispatcher("createpost.jsp").forward(request, response);
             return;
         }
         Post post = new Post();
@@ -58,15 +58,15 @@ public class CreatePostServlet extends HttpServlet {
         try {
             boolean success = postDAO.savePost(post);
             if (success) {
-                response.sendRedirect(request.getContextPath() + "/");
+                response.sendRedirect(request.getContextPath() + "/home");
             } else {
                 request.setAttribute("error", "Failed to create post. Please try again.");
-                request.getRequestDispatcher("create-post.jsp").forward(request, response);
+                request.getRequestDispatcher("createpost.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Database error. Please try again.");
-            request.getRequestDispatcher("create-post.jsp").forward(request, response);
+            request.getRequestDispatcher("createpost.jsp").forward(request, response);
         }
     }
 

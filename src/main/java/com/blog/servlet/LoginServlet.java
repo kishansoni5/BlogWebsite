@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
             if (BCrypt.checkpw(password, user.getPassword())) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect(request.getContextPath() + "/home");
             } else {
                 request.setAttribute("error", "Invalid password!");
                 request.getRequestDispatcher("login.jsp").forward(request, response);

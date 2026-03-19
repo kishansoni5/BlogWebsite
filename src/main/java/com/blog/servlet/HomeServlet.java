@@ -13,9 +13,7 @@ import com.blog.dao.PostDAO;
 import com.blog.model.Post;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 
-@WebServlet("/")
 public class HomeServlet extends HttpServlet {
 
     @Override
@@ -31,15 +29,15 @@ public class HomeServlet extends HttpServlet {
         PostDAO postDAO = new PostDAO();
         try {
             List<Post> posts = postDAO.getAllPublishedPosts();
-
+            System.out.println("DEBUG: Posts fetched = " + posts.size());
             request.setAttribute("posts", posts);
 
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Database error. Please try again.");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
         }
     }
 }
