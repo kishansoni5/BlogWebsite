@@ -105,4 +105,15 @@ public class PostDAO {
             return ps.executeUpdate() > 0;
         }
     }
+
+    public boolean updatePost(Post post) throws SQLException {
+        String sql = "UPDATE posts SET title = ?, content = ? WHERE id = ?";
+        try (Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, post.getTitle());
+            ps.setString(2, post.getContent());
+            ps.setInt(3, post.getId());
+            return ps.executeUpdate() > 0;
+        }
+    }
 }

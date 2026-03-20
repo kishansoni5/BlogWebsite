@@ -192,3 +192,26 @@ body {
     .navbar         { padding: 0 1.25rem; }
     .nav-user       { display: none; }
 }
+
+.post-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.btn-edit {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.btn-edit:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+}

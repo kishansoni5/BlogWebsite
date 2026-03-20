@@ -44,6 +44,11 @@
         <article class="post-article">
 
             <header class="post-header">
+                <% if (currentUser.getId() == post.getUserId()) { %>
+                <div class="post-actions">
+                    <a href="${pageContext.request.contextPath}/editpost?id=<%= post.getId() %>" class="btn-edit">Edit Post</a>
+                </div>
+                <% } %>
                 <div class="post-meta">
                     <span class="post-author"><%= post.getAuthorName() %></span>
                     <span class="post-dot">·</span>
