@@ -10,7 +10,7 @@
     User currentUser = (User) userSession.getAttribute("user");
     Post post = (Post) request.getAttribute("post");
     if (post == null) {
-        response.sendRedirect(request.getContextPath() + "/");
+        response.sendRedirect(request.getContextPath() + "/home");
         return;
     }
 %>

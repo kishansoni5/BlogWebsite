@@ -29,7 +29,6 @@ public class HomeServlet extends HttpServlet {
         PostDAO postDAO = new PostDAO();
         try {
             List<Post> posts = postDAO.getAllPublishedPosts();
-            System.out.println("DEBUG: Posts fetched = " + posts.size());
             request.setAttribute("posts", posts);
 
             request.getRequestDispatcher("home.jsp").forward(request, response);
