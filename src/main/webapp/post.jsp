@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.blog.model.User" %>
 <%@ page import="com.blog.model.Post" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%
     HttpSession userSession = request.getSession(false);
     if (userSession == null || userSession.getAttribute("user") == null) {
@@ -44,9 +45,9 @@
 
             <header class="post-header">
                 <div class="post-meta">
-                    <span class="post-author">Post #<%= post.getUserId() %></span>
+                    <span class="post-author"><%= post.getAuthorName() %></span>
                     <span class="post-dot">·</span>
-                    <span class="post-date"><%= post.getCreatedAt() %></span>
+                    <span class="post-date"><%= new SimpleDateFormat("dd MMM yyyy").format(post.getCreatedAt()) %></span>
                 </div>
                 <h1 class="post-title"><%= post.getTitle() %></h1>
             </header>

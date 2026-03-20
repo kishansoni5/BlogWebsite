@@ -10,21 +10,32 @@ public class Post {
     private String content;
     private String status;
     private Timestamp createdAt;
+    private String authorName;
 
     public Post() {
     }
 
-    public Post(int id, int userId, String title, String content, String status, Timestamp createdAt) {
+    public Post(int id, int userId, String title, String content, String status, Timestamp createdAt,
+            String authorName) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.content = content;
         this.status = status;
         this.createdAt = createdAt;
+        this.authorName = authorName;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     public void setId(int id) {

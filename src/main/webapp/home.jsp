@@ -2,6 +2,7 @@
 <%@ page import="com.blog.model.User" %>
 <%@ page import="com.blog.model.Post" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%
     User loggedInUser = (User) session.getAttribute("user");
     if (loggedInUser == null) {
@@ -63,9 +64,9 @@
                         <article class="post-card">
                             <a href="post?id=<%= post.getId() %>" class="post-card-link">
                                 <div class="post-card-meta">
-                                    <span class="post-card-author">User #<%= post.getUserId() %></span>
+                                    <span class="post-card-author"><%= post.getAuthorName() %></span>
                                     <span class="post-card-dot">·</span>
-                                    <span class="post-card-date"><%= post.getCreatedAt() %></span>
+                                    <span class="post-card-date"><%= new SimpleDateFormat("dd MMM yyyy").format(post.getCreatedAt()) %></span>
                                 </div>
                                 <h3 class="post-card-title"><%= post.getTitle() %></h3>
                                 <p class="post-card-preview"><%

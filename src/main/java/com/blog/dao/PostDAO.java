@@ -25,7 +25,7 @@ public class PostDAO {
 
     public List<Post> getAllPublishedPosts() throws SQLException {
         List<Post> posts = new ArrayList<>();
-        String sql = "SELECT * FROM posts WHERE status = 'published' ORDER BY created_at DESC";
+        String sql = "SELECT posts.*, users.username FROM posts JOIN users ON posts.user_id = users.id WHERE posts.status = 'published' ORDER BY posts.created_at DESC";
 
         try (Connection con = DBConnection.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql);
@@ -39,6 +39,7 @@ public class PostDAO {
                 post.setContent(rs.getString("content"));
                 post.setStatus(rs.getString("status"));
                 post.setCreatedAt(rs.getTimestamp("created_at"));
+                post.setAuthorName(rs.getString("username"));
                 posts.add(post);
             }
         }
@@ -46,7 +47,7 @@ public class PostDAO {
     }
 
     public Post getPostById(int id) throws SQLException {
-        String sql = "SELECT * FROM posts WHERE id = ?";
+        String sql = "SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id=users.id WHERE posts.id = ?";
 
         try (Connection con = DBConnection.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
@@ -62,6 +63,7 @@ public class PostDAO {
                     post.setContent(rs.getString("content"));
                     post.setStatus(rs.getString("status"));
                     post.setCreatedAt(rs.getTimestamp("created_at"));
+                    post.setAuthorName(rs.getString("username"));
                     return post;
                 }
             }
