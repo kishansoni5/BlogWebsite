@@ -47,6 +47,10 @@
                 <% if (currentUser.getId() == post.getUserId()) { %>
                 <div class="post-actions">
                     <a href="${pageContext.request.contextPath}/editpost?id=<%= post.getId() %>" class="btn-edit">Edit Post</a>
+                    <form action="${pageContext.request.contextPath}/deletepost" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="<%= post.getId() %>">
+                        <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</button>
+                    </form>
                 </div>
                 <% } %>
                 <div class="post-meta">

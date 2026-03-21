@@ -215,3 +215,19 @@ body {
     color: var(--ink);
     border-color: var(--ink);
 }
+.btn-delete {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 14px;
+    transition: all 0.2s;
+}
+
+.btn-delete:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+}
